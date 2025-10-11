@@ -1,0 +1,57 @@
+<header>
+  <nav class="navbar navbar-expand-sm" style="background: linear-gradient(90deg, #4f9aff, #56d8ff);">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+      <!-- Left: Logo + Links -->
+      <div class="d-flex align-items-center gap-4">
+        <a class="navbar-brand" href="/">
+          <img src="/resources/images/Logo2.png" alt="Logo" style="height: 40px;">
+        </a>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="navbar-nav d-flex flex-row gap-3 mb-0">
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="/scheduling">Scheduling</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="/matching">Matching</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="/messaging">Messaging</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: Login/User -->
+      <div class="d-flex align-items-center" style="font-size: 1.1rem;">
+        {{#if user}}
+          <div class="dropdown">
+            <a class="nav-link px-3 d-flex align-items-center gap-2 text-white fw-semibold"
+              href="#"
+              role="button"
+              id="userDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <span>{{user.username}}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14 2.451 5.658C1.885 5.042 2.345 4 3.204 4h9.592c.86 0 1.319 1.042.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z"/>
+              </svg>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              <li><a class="dropdown-item" href="#" onclick="toggleDarkMode()">Toggle Night Mode 🌙</a></li>
+            </ul>
+          </div>
+        {{else}}
+          <a class="nav-link text-white fw-bold px-3" href="/login">Login</a>
+        {{/if}}
+      </div>
+
+    </div>
+  </nav>
+</header>

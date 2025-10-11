@@ -1,0 +1,298 @@
+
+<!-- Modal -->
+
+<link rel="stylesheet" href="/resources/css/style.css">
+
+  <style>
+    {{> css}}
+  </style>
+
+
+
+<div class="parentboxcenter">
+
+  
+
+
+
+<div class="childtextbox" style="  margin-right: 5px; margin-top: 10px;">
+<h1 id="currentdate" >April-2-2025</h1>
+</div>
+
+<div>
+             <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Create Event
+                  </button>
+
+
+<!-- <img src="../../resources/images/right.webp"> </img> -->
+
+            
+            <button type="button" onclick="prevweek()" class="btn btn-primary mt-3" >
+                    previous week
+                  </button>
+
+            <button type="button" onclick="nextweek()" class="btn btn-primary mt-3">
+                    next week
+                  </button>
+       
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Event details</h1>
+    
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <form id="eventForm"  action="/scheduleevent" method="POST" >
+            
+            
+                
+    
+                <label for="evname">Event name:</label><br>
+                <input type="text" id="evname" name="evname" required><br>
+    
+              
+
+
+
+
+
+
+
+
+              <br>
+
+                <label for="evname">Event day:</label><br>
+                <input type="text" id="days" name="days" required><br>
+
+
+     
+                
+              <br>
+               
+    
+                <label for="event_time">event time:</label><br>
+                <input type="time" id="event_time" name="event_time" required><br>
+    
+              
+              
+       
+              <br>
+              <br>
+
+
+
+
+              <label for="event_modality">Choose an Event Modality:</label>
+            <select name="modality" id="event_modality" required onchange="updateLocationOptions(this.value)">
+            <option value="in-person" default>In-Person</option>
+            <option value="remote">Remote</option>
+            </select>
+   
+
+              
+                
+                <label for="location">Location:</label><br>
+                <input type="text" id="location" name="location" required><br>   
+              
+              
+ 
+              
+              
+              
+    
+                <label for="attendees">attendees:</label><br>
+                <input type="text" id="attendees" name="attendees" required><br>
+    
+              
+   
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  
+            </form>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="modal-footer">
+    <form>
+ 
+  </form>
+</div>
+
+
+
+
+
+
+        
+      </div>
+    </div>
+  </div>
+  
+
+<div class="row">
+  <!-- Dayspedia Widget Column -->
+  <div class="col-2 mt-4 ms-4" >
+    <iframe
+      width="210"
+      height="317"
+      style="margin-left: 0px;padding:0!important;border:none!important;background:none!important;background:transparent!important"
+      marginheight="0"
+      marginwidth="0"
+      frameborder="0"
+      scrolling="no"
+      src="https://dayspedia.com/if/analog/?v=1&iframe=eyJ3LTExIjp0cnVlLCJ3LTEzIjp0cnVlLCJ3LTE1Ijp0cnVlLCJ3LTExMCI6ZmFsc2UsInctd2lkdGgtMCI6dHJ1ZSwidy13aWR0aC0xIjpmYWxzZSwidy13aWR0aC0yIjpmYWxzZSwidy0xNiI6IjI0cHgiLCJ3LTE3IjoiMTYiLCJ3LTIxIjp0cnVlLCJiZ2ltYWdlIjo3LCJiZ2ltYWdlU2V0Ijp0cnVlLCJ3LTIxYzAiOiIjZmZmZmZmIiwidy0wIjp0cnVlLCJ3LTMiOnRydWUsInctM2MwIjoiIzM0MzQzNCIsInctM2IwIjoiMSIsInctMjAiOnRydWUsInctNCI6IiMwMDdkYmYiLCJ3LTE4IjpmYWxzZSwidy13aWR0aC0yYy0wIjoiMzAwIiwidy0xMTUiOmZhbHNlLCJ3LTIzIjp0cnVlLCJ3LTIzYzAiOiIjZWNlZmYxIiwidy0yNiI6ZmFsc2UsInctMjZiMCI6IjEiLCJ3LTI3Ijp0cnVlLCJ3LTI3YzAiOiIjMzQzNDM0Iiwidy0yNCI6IiMzNDM0MzQiLCJ3LTEzYzAiOiIjZmYwMDUxIiwidy0yMiI6IiMzNDM0MzQiLCJ3LTI1IjoiMTYwIn0=&lang=en&cityid=81">
+    </iframe>
+  </div>
+
+
+
+
+
+
+  <!-- Calendar Column -->
+  <div class="col">
+    <div class="container-md container-fluid py-4 h-100">
+      <div id="calendar" class="row h-100">
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="sunday">
+          <div class="h6 text-center position-relative py-2 day">Sunday</div>
+        </div>
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="monday">
+          <div class="h6 text-center position-relative py-2 day">Monday</div>
+        </div>
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="tuesday">
+          <div class="h6 text-center position-relative py-2 day">Tuesday</div>
+        </div>
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="wednesday">
+          <div class="h6 text-center position-relative py-2 day">Wednesday</div>
+        </div>
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="thursday">
+          <div class="h6 text-center position-relative py-2 day">Thursday</div>
+        </div>
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="friday">
+          <div class="h6 text-center position-relative py-2 day">Friday</div>
+        </div>
+        <div class="col-sm m-1 bg-white rounded px-1 px-md-2" id="saturday">
+          <div class="h6 text-center position-relative py-2 day">Saturday</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   
+    <script>
+        function validateForm() {
+    const evname = document.getElementById("evname").value.trim();
+    const category = document.getElementById("category").value.trim();
+    const eventWeekday = document.getElementById("event_weekday").value.trim();
+    const eventTime = document.getElementById("event_time").value.trim();
+    const eventModality = document.getElementById("event_modality").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const attendees = document.getElementById("attendees").value.trim();
+    if (!evname || !category || !eventWeekday || !eventTime || !eventModality || !location || !attendees) {
+      alert("Please fill out all required fields before saving.");
+      return false;
+    }
+    console.log("VALIDATOR HAS RUN");
+    // Add additional validations if necessary
+    return true;
+    //test
+}
+    </script>
+
+    <script src="../../resources/js/script.js"></script>  
+     <script src="./../../resources/js/script.js"></script>  
+    <script src="/projectSourceCode/src/resources/js/script.js"></script>  
+
+
+
+<!-- <img src="../../resources/images/right.webp"> </img> -->
+
+         <script>
+
+
+          function appendschedule(){
+
+
+    {{#each events}}
+
+checkifdatepresent('{{schedday}}','{{eventname}}','{{eventlocation}}', '{{eventtime}}', '{{attendees}}', '{{modality}}')
+
+     
+
+
+  {{/each}}
+   
+          }
+
+
+  
+
+              document.addEventListener("DOMContentLoaded", function() {
+
+                ww();
+
+                if(localStorage.loaddbtoggle==null){
+                localStorage.setItem('loaddbtoggle', -1);
+                }
+
+                localStorage.setItem('loaddbtoggle', localStorage.loaddbtoggle*-1);
+
+                if(localStorage.loaddbtoggle==1){
+                geteventsfromdb();
+                }
+                
+                appendschedule();
+
+
+              })
+            
+
+
+
+         </script>  
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <!-- Main Section -->
+    <section class="scroll-section text-center">
+      <h1 class="page-title">Welcome to SkillSwap</h1>
+      <p class="lead">SkillSwap is your platform to connect with others, share knowledge, and grow together. Whether you want to learn a new skill or teach what you know, SkillSwap makes it easy to collaborate and achieve your goals.</p>
+      <img src="/resources/images/hero.webp" alt="Hero Image" class="img-fluid rounded shadow">
+    </section>
+
+    <!-- Features Section -->
+    <section class="scroll-section text-center">
+      <h2 class="section-title">Our Features</h2>
+      <div class="row mt-4">
+        <div class="col-md-4 col-sm-12">
+          <img src="/resources/images/ft1.jpg" alt="Feature 1" class="team-photo">
+          <p class="photo-caption">Discover like-minded learners and teachers who share your goals and interests.</p>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <img src="/resources/images/ft2.png" alt="Feature 2" class="team-photo">
+          <p class="photo-caption">Schedule virtual or in-person sessions at times that work best for both of you.</p>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <img src="/resources/images/ft3.webp" alt="Feature 3" class="team-photo">
+          <p class="photo-caption">Easily update your profile to reflect your evolving skills and learning interests.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="scroll-section text-center">
+      <h2 class="section-title">What Our Users Say</h2>
+      <div class="row mt-4">
+        <div class="col-md-6 col-sm-12">
+          <blockquote class="blockquote">
+            <p>"SkillSwap helped me learn guitar while sharing my Photoshop skills. It's like bartering, but for knowledge!"</p>
+            <footer class="blockquote-footer">Jess L., Graphic Designer</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <blockquote class="blockquote">
+            <p>"I matched with someone who taught me Python basics — in exchange, I taught them how to cook! It was a win-win experience."</p>
+            <footer class="blockquote-footer">Mark T., Accountant</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register Section -->
+    {{#if user}}
+      <!-- Do not display the register section if the user is logged in -->
+    {{else}}
+      <section class="scroll-section text-center">
+        <h2 class="section-title">Ready to Share What You Know?</h2>
+        <p>Join SkillSwap today and start your journey of learning and teaching with a vibrant community of knowledge seekers.</p>
+        <a href="/register" class="btn btn-primary">Join SkillSwap Now</a>
+      </section>
+    {{/if}}
+
+    <div style="height: 70px;"></div>
+
+  </div>
+
+  <script src="/resources/js/script.js"></script>
+</body>
+</html>
