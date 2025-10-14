@@ -283,16 +283,26 @@ app.post('/addscore', (req, res) => {
 
   db.tx(async t => {
 
-
+    await t.none(
+      "INSERT INTO leaderboard (username, exercise_type,score) VALUES ($1,$2,$3);",
+      [req.body.uusername,req.body.extype,req.body.sscore]
+    );
 
 
 
     const sched = await db.any(
-      'SELECT * FROM leaderboard;',
+      'SELECT * FROM leaderboard ORDER BY score ASC; ',
     );
 
     console.log(sched)
 
+
+      res.render('pages/leaderboard', {
+    leaderboard: sched,
+   
+  })
+
+    
  
  
 

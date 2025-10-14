@@ -66,6 +66,17 @@ body {
   flex-direction: row;
 }
 
+
+.leaderitem{
+  text-align: center;
+  
+  margin: 10px 50px 20px;
+  justify-content: center;
+  flex-direction: row;
+
+}
+
+
 .childtextboxpadded {
   text-align: center;
   background-color: aliceblue;
