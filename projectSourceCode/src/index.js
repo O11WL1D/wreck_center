@@ -162,6 +162,63 @@ app.get('/', (req, res) => {
   });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post('/scheduleevent', (req, res) => {
 
 
@@ -210,6 +267,63 @@ app.post('/scheduleevent', (req, res) => {
 });
 
 
+
+
+
+
+app.post('/addscore', (req, res) => {
+
+
+
+  //res.render('pages/scheduling');
+
+
+
+
+
+  db.tx(async t => {
+
+
+
+
+
+    const sched = await db.any(
+      'SELECT * FROM leaderboard;',
+    );
+
+    console.log(sched)
+
+ 
+ 
+
+})
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/findevents', (req, res) => {
 
   db.tx(async t => {
@@ -234,6 +348,13 @@ app.get('/findevents', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('pages/about', { title: 'About | ' });
 });
+
+
+app.get('/leaderboard', (req, res) => {
+  res.render('pages/leaderboard', { title: 'About | ' });
+});
+
+
   
 // GET /register route
 app.get('/register', (req, res) => {

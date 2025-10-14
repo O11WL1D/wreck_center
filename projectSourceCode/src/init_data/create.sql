@@ -7,6 +7,9 @@ DROP TABLE IF EXISTS learning_goals;
 DROP TABLE IF EXISTS chats;
 DROP TABLE IF EXISTS messages;
 
+
+DROP TABLE IF EXISTS leaderboard;
+
 -- User table
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -14,6 +17,13 @@ CREATE TABLE users (
     email VARCHAR(150) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL
 );
+
+
+
+
+
+
+
 
 
 -- Skills table (predefined skills)
@@ -79,6 +89,24 @@ CREATE TABLE IF NOT EXISTS events(
     eventtime TIME,
     attendees VARCHAR(100)
 );
+
+
+-- leaderboard table
+CREATE TABLE IF NOT EXISTS leaderboard (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    score VARCHAR(150) UNIQUE NOT NULL,
+    exercise_type VARCHAR(150) UNIQUE NOT NULL    
+
+
+);
+
+
+
+
+
+
+
 
 -- Chats table
 CREATE TABLE IF NOT EXISTS chats (
