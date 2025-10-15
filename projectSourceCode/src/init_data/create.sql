@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS events(
 CREATE TABLE IF NOT EXISTS leaderboard (
     id SERIAL PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
-    score VARCHAR(150) NOT NULL,
+    score INTEGER NOT NULL,
     exercise_type VARCHAR(150) NOT NULL    
 
 

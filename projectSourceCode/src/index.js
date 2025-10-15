@@ -290,17 +290,9 @@ app.post('/addscore', (req, res) => {
 
 
 
-    const sched = await db.any(
-      'SELECT * FROM leaderboard ORDER BY score ASC; ',
-    );
-
-    console.log(sched)
-
-
-      res.render('pages/leaderboard', {
-    leaderboard: sched,
    
-  })
+
+        res.redirect('back');
 
     
  
@@ -312,7 +304,6 @@ app.post('/addscore', (req, res) => {
 
 
 });
-
 
 
 
@@ -361,8 +352,56 @@ app.get('/about', (req, res) => {
 
 
 app.get('/leaderboard', (req, res) => {
-  res.render('pages/leaderboard', { title: 'About | ' });
+
+
+
+ // res.render('pages/leaderboard', { title: 'About | ' });
+
+
+
+  db.tx(async t => {
+    const sched = await db.any(
+      'SELECT * FROM leaderboard ORDER BY score DESC; ',
+    );
+    console.log(sched)
+
+      res.render('pages/leaderboard', {
+    leaderboard: sched,
+   
+  })
+    
+ 
+ 
+})
+
+
+
+
+
+
+
 });
+
+
+
+
+
+
+app.get('/add', (req, res) => {
+
+
+
+ // res.render('pages/leaderboard', { title: 'About | ' });
+
+
+
+
+      res.render('pages/add')
+    
+
+
+});
+
 
 
   
