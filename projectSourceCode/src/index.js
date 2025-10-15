@@ -271,6 +271,10 @@ app.post('/scheduleevent', (req, res) => {
 
 
 
+
+
+
+
 app.post('/addscore', (req, res) => {
 
 
@@ -278,32 +282,36 @@ app.post('/addscore', (req, res) => {
   //res.render('pages/scheduling');
 
 
-
+const username = req.session.user?.username;
 
 
   db.tx(async t => {
 
     await t.none(
       "INSERT INTO leaderboard (username, exercise_type,score) VALUES ($1,$2,$3);",
-      [req.body.uusername,req.body.extype,req.body.sscore]
+      [ username,req.body.extype,req.body.sscore]
     );
 
 
 
    
 
-        res.redirect('back');
-
-    
- 
- 
 
 })
 
-
-
-
+ .then(() => {
+    // Once insert is successful, redirect to leaderboard
+    res.redirect('/leaderboard');
+  })
+  .catch(error => {
+    console.error(error);
+    res.status(500).send('Error adding score');
+  });
 });
+
+
+
+
 
 
 
@@ -386,21 +394,28 @@ app.get('/leaderboard', (req, res) => {
 
 
 
-
+// GET /scheduling route
 app.get('/add', (req, res) => {
 
 
 
- // res.render('pages/leaderboard', { title: 'About | ' });
+  console.log("Logged-in session user:", req.session.user);
 
+  if(req.session.user==null){
+    res.render('pages/login');
+  
+    }else{
 
+        res.render('pages/add')
 
-
-      res.render('pages/add')
-    
-
-
+    }
+ 
 });
+
+
+
+
+
 
 
 
@@ -456,8 +471,10 @@ app.post('/register', async (req, res) => {
 
 
 
+
 // GET /scheduling route
 app.get('/scheduling', (req, res) => {
+
 
 
   console.log("Logged-in session user:", req.session.user);
@@ -472,6 +489,9 @@ app.get('/scheduling', (req, res) => {
     }
  
 });
+
+
+
 
 
 // GET /login route
